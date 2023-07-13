@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Meeting Summary</title>
+  <link rel="stylesheet" href="/Frontend/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Meeting Summary</h1>
+    
+    <form id="meetingForm">
+      <label for="meetingIdInput">Meeting ID:</label>
+      <input type="text" id="meetingIdInput" required>
+      
+      <label for="dateInput">Date:</label>
+      <input type="date" id="dateInput" required>
+      
+      <label for="timeInput">Time:</label>
+      <input type="time" id="timeInput" required>
+      
+      <label for="topicInput">Topic:</label>
+      <input type="text" id="topicInput" required>
+      
+      <label for="summaryInput">Summary:</label>
+      <textarea id="summaryInput" rows="5" required></textarea>
+      
+      <label for="photoInput">Photo:</label>
+      <div class="file-upload">
+        <input type="file" id="photoInput" required accept="image/*">
+        <label class="file-upload-label" for="photoInput">Upload</label>
+      </div>
+      
+      <button type="submit" class="submit-btn"> <a href="/Frontend/dashboard.html">Submit</a></button>
+    </form>
+   <script src="/Frontend/index.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Meeting Dashboard</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .meetings-list {
+      margin-bottom: 20px;
+    }
+    
+    .meeting-card {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+    
+    .meeting-card .meeting-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .meeting-card .meeting-info span {
+      font-weight: bold;
+    }
+    
+    .meeting-card .meeting-summary {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Meeting Dashboard</h1>
+    
+    <div class="meetings-list" id="meetingsList"></div>
+  </div>
+  
+  <script>
+    // JavaScript code to populate the dashboard
+    // Sample data - Replace this with your own data or fetch it from a repository
+    var meetingsData = [
+      {
+        id: "1",
+        date: "2023-07-13",
+        time: "10:30",
+        topic: "Project Kickoff",
+        summary: "Discussed project goals and objectives."
+      },
+      {
+        id: "2",
+        date: "2023-07-14",
+        time: "15:00",
+        topic: "Client Presentation",
+        summary: "Presented project updates to the client."
+      },
+      {
+        id: "3",
+        date: "2023-07-15",
+        time: "09:45",
+        topic: "Team Meeting",
+        summary: "Reviewed team progress and assigned tasks."
+      },
+      {
+        id: "4",
+        date: "2023-07-16",
+        time: "14:15",
+        topic: "Budget Discussion",
+        summary: "Analyzed project budget and proposed adjustments."
+      },
+      {
+        id: "5",
+        date: "2023-07-17",
+        time: "11:00",
+        topic: "Client Feedback",
+        summary: "Received feedback from the client and discussed improvements."
+      }
+    ];
+    
+    var meetingsList = document.getElementById("meetingsList");
+    
+    // Loop through the meetings data and create meeting cards
+    for (var i = 0; i < meetingsData.length; i++) {
+      var meeting = meetingsData[i];
+      
+      // Create meeting card element
+      var meetingCard = document.createElement("div");
+      meetingCard.classList.add("meeting-card");
+      
+      // Create meeting info section
+      var meetingInfo = document.createElement("div");
+      meetingInfo.classList.add("meeting-info");
+      
+      // Add meeting ID
+      var meetingId = document.createElement("span");
+      meetingId.textContent = "Meeting ID: " + meeting.id;
+      meetingInfo.appendChild(meetingId);
+      
+      // Add meeting date and time
+      var meetingDateTime = document.createElement("span");
+      var time = formatTime(meeting.time);
+      meetingDateTime.textContent = meeting.date + " " + time;
+      meetingInfo.appendChild(meetingDateTime);
+      
+      // Append meeting info to meeting card
+      meetingCard.appendChild(meetingInfo);
+      
+      // Create meeting summary section
+      var meetingSummary = document.createElement("div");
+      meetingSummary.classList.add("meeting-summary");
+      meetingSummary.textContent = "Summary: " + meeting.summary;
+      
+      // Append meeting summary to meeting card
+      meetingCard.appendChild(meetingSummary);
+      
+      // Append meeting card to meetings list
+      meetingsList.appendChild(meetingCard);
+    }
+    
+    // Function to format time with AM/PM indication
+    function formatTime(time) {
+      var hours = parseInt(time.substr(0, 2));
+      var minutes = time.substr(3, 2);
+      var period = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+      return hours + ":" + minutes + " " + period;
+    }
+  </script>
+</body>
+</html>
